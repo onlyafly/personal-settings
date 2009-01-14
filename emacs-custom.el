@@ -1,4 +1,8 @@
-;; KEVIN ALBRECHT 1/12/2009
+;; KEVIN ALBRECHT 1/13/2009
+;;
+;; .emacs should contain:
+;;   (add-to-list 'load-path "~/src/personal-settings")
+;;   (load-library "~/src/personal-settings/emacs-custom.el")
 
 ;;-----------------------------------------------------------------------------
 ;;----- VARIABLES
@@ -11,6 +15,7 @@
 ;;----- FUTURE SUGGESTIONS
 
 ;(setq inhibit-startup-message t)
+;(shell) ; run a shell
 
 ;;-----------------------------------------------------------------------------
 ;;----- PREINSTALLED
