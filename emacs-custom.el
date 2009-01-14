@@ -28,7 +28,7 @@
  '(tool-bar-mode nil))
 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
+ ;; custom-set-faces was added by 
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
@@ -41,6 +41,8 @@
     (progn
       (set-default-font "-outline-Bitstream Vera Sans
 Mono-normal-r-normal-normal-13-97-96-96-c-*-iso8859-1")))
+
+(setq-default indent-tabs-mode nil)
 
 ;;-----------------------------------------------------------------------------
 ;;----- CLOJURE
