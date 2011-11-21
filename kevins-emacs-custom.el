@@ -1,8 +1,15 @@
 ;; KEVIN ALBRECHT 2011-11-21
 ;;
-;; .emacs or ~/.emacs.d/init.el should contain:
-;;   (add-to-list 'load-path "~/code/personal-settings")
-;;   (load-library "~/code/personal-settings/kevins-emacs-custom.el")
+;; 1. Find your emacs init file in one of the following locations:
+;;    ~/.emacs
+;;    ~/AppData/Roaming/.emacs.d/init.el
+;;    ~/.emacs.d/init.el
+;;
+;; 2. Add the following lines to your emacs init file that you found
+;;    in step 1, above:
+;;
+;;    (add-to-list 'load-path "~/code/personal-settings")
+;;    (load-library "~/code/personal-settings/kevins-emacs-custom.el")
 
 ;;---------- Initialize marmalade package manager
 
