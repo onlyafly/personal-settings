@@ -62,3 +62,34 @@
       (cd "~/code/")
       (setq default-directory "~/code/")))
 
+;;---------- ERLANG SUPPORT
+
+(if is-system-mac
+    (progn
+
+      ;; The Erlang Emacs mode
+      (setq load-path (cons "/usr/local/lib/erlang/lib/tools-2.6.6.5/emacs"
+                            load-path))
+      (setq erlang-root-dir "/usr/local/lib/erlang")
+      (setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
+      (require 'erlang-start)
+
+      ;; Automatic Erlang syntax checking
+      (require 'erlang-flymake)))
+
+;;---------- Mac Keyboard Support
+
+;; This allows use of the Alt/Option key for international use on Mac:
+;; ctrl = C
+;; alt/option = not bound in emacs
+;; cmd = M
+;;
+;; See:
+;; http://stackoverflow.com/questions/3376863/unable-to-type-braces-and-square-braces-in-emacs
+(if is-system-mac
+    (progn
+      (setq mac-option-modifier nil
+            mac-command-modifier 'meta
+            x-select-enable-clipboard t)))
+
+
