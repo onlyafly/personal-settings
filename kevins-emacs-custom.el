@@ -47,6 +47,9 @@
 
 (setq-default indent-tabs-mode nil)
 
+;; Turn off wrapping
+(setq-default truncate-lines 't)
+
 ;;---------- FILE SYSTEM
 
 (if is-system-windows
