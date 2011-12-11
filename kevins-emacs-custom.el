@@ -1,4 +1,4 @@
-;; KEVIN ALBRECHT 2011-11-21
+;; KEVIN ALBRECHT 2011-12-11
 ;;
 ;; 1. Find your emacs init file in one of the following locations:
 ;;    ~/.emacs
@@ -24,7 +24,9 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(starter-kit starter-kit-lisp)
+(defvar my-packages '(starter-kit
+                      starter-kit-lisp
+                      color-theme-solarized)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -36,6 +38,10 @@
 ;; See if we're on MS Windows or some other OS
 (defvar is-system-windows (string-match "windows" (symbol-name system-type)))
 (defvar is-system-mac (string-match "darwin" (symbol-name system-type)))
+
+;;---------- Color theme setup
+
+(color-theme-solarized-light)
 
 ;;---------- FONT SETUP
 
