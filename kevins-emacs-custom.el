@@ -17,9 +17,16 @@
 (defvar is-system-windows (string-match "windows" (symbol-name system-type)))
 (defvar is-system-mac (string-match "darwin" (symbol-name system-type)))
 
+(defvar home-dir
+  (cond (is-system-mac "/Users/kevin.albrecht/")
+        (is-system-windows "C:/Users/Kevin/")))
+
+(defvar emacs-dir
+  (cond (is-system-mac (concat home-dir ".emacs.d/"))
+        (is-system-windows (concat home-dir "AppData/Roaming/.emacs.d/"))))
+
 (defvar themes-dir
-  (cond (is-system-mac "/Users/kevin.albrecht/.emacs.d/themes/")
-        (is-system-windows "C:\\Users\\Kevin\\AppData\\Roaming\\.emacs.d\\themes\\")))
+  (concat emacs-dir "themes/"))
 
 ;;---------- Helper functions
 
@@ -72,15 +79,9 @@
 
 ;;---------- FILE SYSTEM
 
-(if is-system-windows
-    (progn
-      (cd "C:/Users/Kevin/code/")
-      (setq default-directory "C:/Users/Kevin/code/")))
-
-(if is-system-mac
-    (progn
-      (cd "~/code/")
-      (setq default-directory "~/code/")))
+;; Default directory
+(cd (concat home-dir "code/"))
+(setq default-directory (concat home-dir "code/"))
 
 ;;---------- ERLANG SUPPORT
 
