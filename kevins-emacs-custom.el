@@ -11,6 +11,23 @@
 ;;    (add-to-list 'load-path "~/code/personal-settings")
 ;;    (load-library "~/code/personal-settings/kevins-emacs-custom.el")
 
+;;---------- Setup
+
+;; See if we're on MS Windows or some other OS
+(defvar is-system-windows (string-match "windows" (symbol-name system-type)))
+(defvar is-system-mac (string-match "darwin" (symbol-name system-type)))
+
+(defvar themes-dir
+  (cond (is-system-mac "/Users/kevin.albrecht/.emacs.d/themes/")
+        (is-system-windows "C:\\Users\\Kevin\\AppData\\Roaming\\.emacs.d\\themes\\")))
+
+;;---------- Helper functions
+
+(defun download-if-missing (file-path url-path)
+  (if (not (file-exists-p file-path))
+      (progn
+        (url-copy-file url-path file-path))))
+
 ;;---------- Initialize marmalade package manager
 
 (require 'package)
@@ -25,23 +42,20 @@
 
 ;; Add in your own as you wish:
 (defvar my-packages '(starter-kit
-                      starter-kit-lisp
-                      color-theme-solarized)
+                      starter-kit-lisp)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
 
-;;---------- VARIABLES
-
-;; See if we're on MS Windows or some other OS
-(defvar is-system-windows (string-match "windows" (symbol-name system-type)))
-(defvar is-system-mac (string-match "darwin" (symbol-name system-type)))
-
 ;;---------- Color theme setup
 
-(color-theme-solarized-light)
+(download-if-missing (concat themes-dir "zenburn-theme.el")
+                     "https://raw.github.com/bbatsov/zenburn-emacs/master/zenburn-theme.el")
+
+(add-to-list 'custom-theme-load-path themes-dir)
+(load-theme 'zenburn 't)
 
 ;;---------- FONT SETUP
 
