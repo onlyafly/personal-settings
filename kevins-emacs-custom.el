@@ -35,6 +35,11 @@
       (progn
         (url-copy-file url-path file-path))))
 
+(defun create-directory-if-missing (path)
+  (if (not (file-accessible-directory-p path))
+      (progn
+        (make-directory path))))
+
 ;;---------- Initialize marmalade package manager
 
 (require 'package)
@@ -58,6 +63,8 @@
     (package-install p)))
 
 ;;---------- Color theme setup
+
+(create-directory-if-missing themes-dir)
 
 (download-if-missing (concat themes-dir "zenburn-theme.el")
                      "https://raw.github.com/bbatsov/zenburn-emacs/master/zenburn-theme.el")
