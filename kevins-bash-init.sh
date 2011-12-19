@@ -19,3 +19,14 @@ alias c='clear'
 #PS1="[\d \t \u@\h: \w]\n$ "
 PS1="[\w] $ "
 
+## To fix this error:
+## perl: warning: Setting locale failed.
+## perl: warning: Please check that your locale settings:
+## 	LANGUAGE = (unset),
+##	LC_ALL = (unset),
+##	LC_CTYPE = "UTF-8",
+##	LANG = "en_US.UTF-8"
+##    are supported and installed on your system.
+## perl: warning: Falling back to the standard locale ("C").
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
