@@ -15,7 +15,14 @@ alias kerl='ERL_LIBS=.. erl -pa ebin'
 alias ls='ls -algG'
 alias c='clear'
 
+##---------- Custom prompt
+
 ## [Fri Dec 16 15:02:33 kevin.albrecht@kevinfish: ~/code/erlang-tests]
 #PS1="[\d \t \u@\h: \w]\n$ "
-PS1="[\w] $ "
 
+## [~/code/test] $
+#PS1="[\w] $ "
+
+## Kevin@KEVIN-MSI ~/code/personal-settings (master)
+#PS1="\[\033]0;$MSYSTEM:\w\007 \033[32m\]\u@\h \[\033[33m\w$(__git_ps1)\033[0m\] $ "
+PS1='\[\033]0;$MSYSTEM:\w\007\033[32m\]\u@\h \[\033[33m\w$(__git_ps1)\033[0m\] \n$ '

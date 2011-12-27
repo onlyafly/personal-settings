@@ -55,7 +55,7 @@
 ;; Add in your own as you wish:
 (defvar my-packages '(starter-kit
                       starter-kit-lisp
-                      typing)
+                      markdown-mode)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -68,9 +68,18 @@
 
 (download-if-missing (concat themes-dir "zenburn-theme.el")
                      "https://raw.github.com/bbatsov/zenburn-emacs/master/zenburn-theme.el")
+(download-if-missing (concat themes-dir "solarized-theme.el")
+                     "https://raw.github.com/bbatsov/solarized-emacs/master/solarized-theme.el")
+(download-if-missing (concat themes-dir "solarized-dark-theme.el")
+                     "https://raw.github.com/bbatsov/solarized-emacs/master/solarized-dark-theme.el")
+(download-if-missing (concat themes-dir "solarized-light-theme.el")
+                     "https://raw.github.com/bbatsov/solarized-emacs/master/solarized-light-theme.el")
 
 (add-to-list 'custom-theme-load-path themes-dir)
+
 (load-theme 'zenburn 't)
+;;(load-theme 'solarized-light 't)
+;;(load-theme 'solarized-dark 't)
 
 ;;---------- FONT SETUP
 
@@ -105,6 +114,11 @@
 
       ;; Automatic Erlang syntax checking
       (require 'erlang-flymake)))
+
+;;---------- Markdown support
+
+(setq auto-mode-alist (cons '("\\.text" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
 
 ;;---------- Mac Keyboard Support
 
