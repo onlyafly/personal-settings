@@ -24,11 +24,11 @@ alias getrebar='wget http://cloud.github.com/downloads/basho/rebar/rebar && chmo
 #PS1="[\d \t \u@\h: \w]\n$ "
 
 ## [~/code/test] $
-#PS1="[\w] $ "
+PS1="[\w] $ "
 
 ## Kevin@KEVIN-MSI ~/code/personal-settings (master)
 #PS1="\[\033]0;$MSYSTEM:\w\007 \033[32m\]\u@\h \[\033[33m\w$(__git_ps1)\033[0m\] $ "
-PS1='\[\033]0;$MSYSTEM:\w\007\033[32m\]\u@\h \[\033[33m\w$(__git_ps1)\033[0m\] \n$ '
+#PS1='\[\033]0;$MSYSTEM:\w\007\033[32m\]\u@\h \[\033[33m\w$(__git_ps1)\033[0m\] \n$ '
 
 ##---------- Other
 
