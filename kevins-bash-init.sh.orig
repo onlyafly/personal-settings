@@ -15,10 +15,12 @@ alias kerl='ERL_LIBS=.. erl -pa ebin'
 alias ls='ls -algG'
 alias c='clear'
 
+<<<<<<< HEAD
 ## Erlang related aliases
 alias getrebar='wget http://cloud.github.com/downloads/basho/rebar/rebar && chmod u+x rebar'
-
+=======
 ##---------- Custom prompt
+>>>>>>> b5b826614bd65078c96c576ca0cda46d67077e8c
 
 ## [Fri Dec 16 15:02:33 kevin.albrecht@kevinfish: ~/code/erlang-tests]
 #PS1="[\d \t \u@\h: \w]\n$ "
