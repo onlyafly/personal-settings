@@ -135,4 +135,7 @@
             mac-command-modifier 'meta
             x-select-enable-clipboard t)))
 
+;;---------- Misc Settings
+
+(setq column-number-mode t)
 
