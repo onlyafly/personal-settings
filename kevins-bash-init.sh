@@ -11,12 +11,23 @@
 #
 #    . ~/code/personal-settings/kevins-bash-init.sh
 
-alias kerl='ERL_LIBS=.. erl -pa ebin'
+alias kerl='erl -pa ebin deps/*/ebin'
 alias ls='ls -algG'
 alias c='clear'
 
 ## Erlang related aliases
 alias getrebar='wget http://cloud.github.com/downloads/basho/rebar/rebar && chmod u+x rebar'
+
+## Git
+alias gs='git status'
+alias ga='git add'
+alias gph='git push'
+alias gpl='git pull'
+alias gco='git commit'
+alias gb='git branch'
+alias gch='git checkout'
+alias gl='git log'
+alias gd='git diff'
 
 ##---------- Custom prompt
 
