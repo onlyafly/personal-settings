@@ -1,4 +1,4 @@
-;; KEVIN ALBRECHT 2011-12-11
+;; KEVIN ALBRECHT 2012-02-03
 ;;
 ;; 1. Find your emacs init file in one of the following locations:
 ;;    ~/.emacs
@@ -27,6 +27,9 @@
 
 (defvar themes-dir
   (concat emacs-dir "themes/"))
+
+(defvar code-dir
+  (concat home-dir "code/"))
 
 ;;---------- Helper functions
 
@@ -106,14 +109,20 @@
     (progn
 
       ;; The Erlang Emacs mode
-      (setq load-path (cons "/usr/local/lib/erlang/lib/tools-2.6.6.5/emacs"
-                            load-path))
+      (add-to-list 'load-path "/usr/local/lib/erlang/lib/tools-2.6.6.5/emacs")
       (setq erlang-root-dir "/usr/local/lib/erlang")
       (setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
       (require 'erlang-start)
 
       ;; Automatic Erlang syntax checking
-      (require 'erlang-flymake)))
+      (require 'erlang-flymake)
+
+      ;; Distel for Erlang; for this to work, first download from
+      ;; https://github.com/massemanet/distel and then run make.
+      (add-to-list 'load-path (concat code-dir
+                                      "distel/elisp"))
+      (require 'distel)
+      (distel-setup)))
 
 ;;---------- Markdown support
 
