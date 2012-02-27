@@ -16,13 +16,16 @@
 ;; See if we're on MS Windows or some other OS
 (defvar is-system-windows (string-match "windows" (symbol-name system-type)))
 (defvar is-system-mac (string-match "darwin" (symbol-name system-type)))
+(defvar is-system-linux (string-match "gnu/linux" (symbol-name system-type)))
 
 (defvar home-dir
   (cond (is-system-mac "/Users/kevin.albrecht/")
+        (is-system-linux "/home/kevin/")
         (is-system-windows "C:/Users/Kevin/")))
 
 (defvar emacs-dir
   (cond (is-system-mac (concat home-dir ".emacs.d/"))
+        (is-system-mac (concat home-dir ".emacs.d/"))
         (is-system-windows (concat home-dir "AppData/Roaming/.emacs.d/"))))
 
 (defvar themes-dir
