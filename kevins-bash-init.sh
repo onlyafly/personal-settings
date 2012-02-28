@@ -1,22 +1,29 @@
 # Kevin's Bash Startup Script
 #
 # Kevin Albrecht
-# 2011-12-27
+# 2012-02-28
 #
 # 1. Give this file execute permissions:
 #
 #    chmod +x kevins-bash-init.sh
 #
-# 2. Add the following to your ~/.profile file:
+# 2. Add the following to your bash initialization file:
 #
 #    . ~/code/personal-settings/kevins-bash-init.sh
+# 
+#    The bash initialization file will be found in one of these
+#    locations:
+#
+#    MacOS X: ~/.profile
+#
+#    Ubuntu:  ~/.bashrc
+#             ~/.profile
 
-alias kerl='erl -pa ebin deps/*/ebin'
 alias ls='ls -algG'
-alias c='clear'
 
 ## Erlang related aliases
 alias getrebar='wget http://cloud.github.com/downloads/basho/rebar/rebar && chmod u+x rebar'
+alias kerl='erl -pa ebin deps/*/ebin'
 
 ## Git
 alias gs='git status'

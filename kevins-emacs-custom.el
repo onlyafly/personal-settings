@@ -61,7 +61,8 @@
 ;; Add in your own as you wish:
 (defvar my-packages '(starter-kit
                       starter-kit-lisp
-                      markdown-mode)
+                      markdown-mode
+                      go-mode)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -112,7 +113,7 @@
     (progn
 
       ;; The Erlang Emacs mode
-      (add-to-list 'load-path "/usr/local/lib/erlang/lib/tools-2.6.6.5/emacs")
+      (add-to-list 'load-path (car (file-expand-wildcards "/usr/local/lib/erlang/lib/tools-*/emacs")))
       (setq erlang-root-dir "/usr/local/lib/erlang")
       (setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
       (require 'erlang-start)
