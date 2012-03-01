@@ -151,4 +151,4 @@
 ;;---------- Misc Settings
 
 (setq column-number-mode t)
-
+(setq default-tab-width 4)
