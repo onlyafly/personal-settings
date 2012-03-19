@@ -91,7 +91,7 @@
 ;;---------- FONT SETUP
 
 (if is-system-windows
-    (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono-10"))
+    (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono-9"))
 
 (if is-system-mac
     (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono-14"))
