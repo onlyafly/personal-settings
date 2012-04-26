@@ -25,7 +25,7 @@
 
 (defvar emacs-dir
   (cond (is-system-mac (concat home-dir ".emacs.d/"))
-        (is-system-mac (concat home-dir ".emacs.d/"))
+        (is-system-linux (concat home-dir ".emacs.d/"))
         (is-system-windows (concat home-dir "AppData/Roaming/.emacs.d/"))))
 
 (defvar themes-dir
@@ -91,7 +91,7 @@
 ;;---------- FONT SETUP
 
 (if is-system-windows
-    (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono-10"))
+    (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono-9"))
 
 (if is-system-mac
     (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono-14"))
@@ -151,4 +151,9 @@
 ;;---------- Misc Settings
 
 (setq column-number-mode t)
+(setq default-tab-width 4)
 
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
