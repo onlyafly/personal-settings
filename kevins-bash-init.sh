@@ -73,3 +73,8 @@ PS1='\[\033]0;$MSYSTEM:\w\007\033[32m\]\u@\h: \[\033[33m\w\033[0m\] \[\033[31m$(
 ## perl: warning: Falling back to the standard locale ("C").
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+
+##---------- Go-related
+
+export GOPATH=$HOME/code/gocode
+export PATH=$GOPATH/bin:$PATH
