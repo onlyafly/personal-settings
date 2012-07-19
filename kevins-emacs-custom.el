@@ -1,4 +1,4 @@
-;; KEVIN ALBRECHT 2012-02-03
+;; KEVIN ALBRECHT 2012-07-19
 ;;
 ;; 1. Find your emacs init file in one of the following locations:
 ;;    ~/.emacs
@@ -13,16 +13,18 @@
 
 ;;---------- Setup
 
-;; See if we're on MS Windows or some other OS
+;; Operating system
 (defvar is-system-windows (string-match "windows" (symbol-name system-type)))
 (defvar is-system-mac (string-match "darwin" (symbol-name system-type)))
 (defvar is-system-linux (string-match "gnu/linux" (symbol-name system-type)))
 
+;; Home directory
 (defvar home-dir
   (cond (is-system-mac "/Users/kevin.albrecht/")
         (is-system-linux "/home/kevin/")
         (is-system-windows "C:/Users/Kevin/")))
 
+;; Emacs directory
 (defvar emacs-dir
   (cond (is-system-mac (concat home-dir ".emacs.d/"))
         (is-system-linux (concat home-dir ".emacs.d/"))
@@ -128,6 +130,9 @@
       (require 'distel)
       (distel-setup)))
 
+;; Erlang only supports the latin-1 encoding for source files
+(modify-coding-system-alist 'file "\\.erl\\'" 'iso-latin-1)
+
 ;;---------- Markdown support
 
 (setq auto-mode-alist (cons '("\\.text" . markdown-mode) auto-mode-alist))
@@ -137,7 +142,7 @@
 
 ;; This allows use of the Alt/Option key for international use on Mac:
 ;; ctrl = C
-;; alt/option = not bound in emacs
+;; alt/option = not bound in emacs, allows this to be used for other characters
 ;; cmd = M
 ;;
 ;; See:
