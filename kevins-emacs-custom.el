@@ -47,6 +47,9 @@
         (is-system-linux (concat home-dir ".emacs.d/"))
         (is-system-windows (concat home-dir "AppData/Roaming/.emacs.d/"))))
 
+(defvar emacs-extras-dir
+  (concat emacs-dir "extras/"))
+
 (defvar themes-dir
   (concat emacs-dir "themes/"))
 
@@ -77,18 +80,26 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-;; Add in your own as you wish:
+;; Add in your own as you wish. If one of these fails, try M-x
+;; package-refresh-contents to update the list of packages from ELPA
+;; and marmalade
 (defvar my-packages '(starter-kit      ;; the Emacs Starter Kit
                       starter-kit-lisp ;; for generic Lisp support
                       clojure-mode     ;; for Clojure
                       nrepl            ;; for Clojure, https://github.com/kingtim/nrepl.el
                       markdown-mode    ;; for the Markdown markup language
-                      go-mode)         ;; for the Go programming language
+                      go-mode          ;; for the Go programming language
+                      auto-complete)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+;;---------- Emacs Extras Directory
+
+(create-directory-if-missing emacs-extras-dir)
+(add-to-list 'load-path emacs-extras-dir)
 
 ;;---------- Color theme setup
 
@@ -127,6 +138,17 @@
 ;; Default directory
 (cd code-dir)
 (setq default-directory code-dir)
+
+;;---------- GO SUPPORT
+
+;; This requires go-autocomplete to be installed with "go get" to
+;; correctly work. See: https://github.com/nsf/gocode
+(if is-system-windows
+    (progn
+      (download-if-missing (concat emacs-extras-dir "go-autocomplete.el")
+                           "https://raw.github.com/nsf/gocode/master/emacs/go-autocomplete.el")
+      (require 'go-autocomplete)
+      (require 'auto-complete-config)))
 
 ;;---------- ERLANG SUPPORT
 
