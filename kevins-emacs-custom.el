@@ -1,5 +1,20 @@
-;; KEVIN ALBRECHT 2012-07-19
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
+;; KEVIN ALBRECHT, 2012-10-17
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Installing Emacs
+;; ----------------
+;; Mac OS X: http://emacsformacosx.com/builds
+;; Windows:  http://code.google.com/p/emacs-for-windows/downloads/list
+;; Debian:   http://emacs.naquadah.org/
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Setting up this file
+;; --------------------
+;; 
 ;; 1. Find your emacs init file in one of the following locations:
 ;;    ~/.emacs
 ;;    ~/AppData/Roaming/.emacs.d/init.el
@@ -10,6 +25,8 @@
 ;;
 ;;    (add-to-list 'load-path "~/code/personal-settings")
 ;;    (load-library "~/code/personal-settings/kevins-emacs-custom.el")
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;---------- Setup
 
@@ -61,10 +78,12 @@
   (package-refresh-contents))
 
 ;; Add in your own as you wish:
-(defvar my-packages '(starter-kit
-                      starter-kit-lisp
-                      markdown-mode
-                      go-mode)
+(defvar my-packages '(starter-kit      ;; the Emacs Starter Kit
+                      starter-kit-lisp ;; for generic Lisp support
+                      clojure-mode     ;; for Clojure
+                      nrepl            ;; for Clojure, https://github.com/kingtim/nrepl.el
+                      markdown-mode    ;; for the Markdown markup language
+                      go-mode)         ;; for the Go programming language
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -106,8 +125,8 @@
 ;;---------- FILE SYSTEM
 
 ;; Default directory
-(cd (concat home-dir "code/"))
-(setq default-directory (concat home-dir "code/"))
+(cd code-dir)
+(setq default-directory code-dir)
 
 ;;---------- ERLANG SUPPORT
 
@@ -132,6 +151,9 @@
 
 ;; Erlang only supports the latin-1 encoding for source files
 (modify-coding-system-alist 'file "\\.erl\\'" 'iso-latin-1)
+
+;;---------- Clojure support
+;; 1. Install leiningen: http://leiningen.org/
 
 ;;---------- Markdown support
 

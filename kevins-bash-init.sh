@@ -77,4 +77,4 @@ export LC_ALL=en_US.UTF-8
 ##---------- Go-related
 
 export GOPATH=$HOME/code/gocode
-export PATH=$GOPATH/bin:$PATH
+export PATH=$GOPATH/bin:$HOME/code/bin:$PATH
