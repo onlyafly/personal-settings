@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; KEVIN ALBRECHT, 2012-10-17
+;; KEVIN ALBRECHT, 2012-11-23
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -25,6 +25,9 @@
 ;;
 ;;    (add-to-list 'load-path "~/code/personal-settings")
 ;;    (load-library "~/code/personal-settings/kevins-emacs-custom.el")
+;;
+;; 3. On Windows, install cygwin and then set the system PATH variable
+;;    to have C:\cygwin\bin as the first thing on the PATH
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -196,6 +199,18 @@
       (setq mac-option-modifier nil
             mac-command-modifier 'meta
             x-select-enable-clipboard t)))
+
+;;---------- Find/Grep Support
+
+;; Prevent issues with the Windows null device (NUL)
+;; when using cygwin find with rgrep.
+;; From http://emacswiki.org/emacs/NTEmacsWithCygwin
+(if is-system-windows
+    (defadvice grep-compute-defaults (around grep-compute-defaults-advice-null-device)
+      "Use cygwin's /dev/null as the null-device."
+      (let ((null-device "/dev/null"))
+        ad-do-it))
+  (ad-activate 'grep-compute-defaults))
 
 ;;---------- Misc Settings
 
