@@ -133,6 +133,9 @@
 (if is-system-mac
     (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono-14"))
 
+(if is-system-linux
+    (set-face-attribute 'default nil :font "Bitstream Vera Sans Mono-10"))
+
 (setq-default indent-tabs-mode nil)
 
 ;; Turn off wrapping
