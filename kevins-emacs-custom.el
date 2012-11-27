@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; KEVIN ALBRECHT, 2012-11-23
+;; KEVIN ALBRECHT, 2012-11-27
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -110,8 +110,10 @@
 
 (download-if-missing (concat themes-dir "zenburn-theme.el")
                      "https://raw.github.com/bbatsov/zenburn-emacs/master/zenburn-theme.el")
+
+;; See https://github.com/bbatsov/solarized-emacs
 (download-if-missing (concat themes-dir "solarized-theme.el")
-                     "https://raw.github.com/bbatsov/solarized-emacs/master/solarized-theme.el")
+                     "https://raw.github.com/bbatsov/solarized-emacs/master/solarized.el")
 (download-if-missing (concat themes-dir "solarized-dark-theme.el")
                      "https://raw.github.com/bbatsov/solarized-emacs/master/solarized-dark-theme.el")
 (download-if-missing (concat themes-dir "solarized-light-theme.el")
@@ -206,11 +208,12 @@
 ;; when using cygwin find with rgrep.
 ;; From http://emacswiki.org/emacs/NTEmacsWithCygwin
 (if is-system-windows
-    (defadvice grep-compute-defaults (around grep-compute-defaults-advice-null-device)
-      "Use cygwin's /dev/null as the null-device."
-      (let ((null-device "/dev/null"))
-        ad-do-it))
-  (ad-activate 'grep-compute-defaults))
+    (progn
+      (defadvice grep-compute-defaults (around grep-compute-defaults-advice-null-device)
+        "Use cygwin's /dev/null as the null-device."
+        (let ((null-device "/dev/null"))
+          ad-do-it))
+      (ad-activate 'grep-compute-defaults)))
 
 ;;---------- Misc Settings
 
