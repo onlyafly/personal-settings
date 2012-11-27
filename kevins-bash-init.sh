@@ -1,7 +1,7 @@
 # Kevin's Bash Startup Script
 #
 # Kevin Albrecht
-# 2012-02-28
+# 2012-11-27
 #
 # 1. Give this file execute permissions:
 #
@@ -17,7 +17,8 @@
 #    MacOS X: ~/.profile
 #
 #    Ubuntu:  ~/.bashrc
-#             ~/.profile
+#             (DO NOT place .profile, since .profile is run in the
+#             login shell, which does not recognize bash extensions)
 
 alias ls='ls -algG'
 
