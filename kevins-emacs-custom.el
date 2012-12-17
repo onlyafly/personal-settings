@@ -185,6 +185,14 @@
 ;;---------- Clojure support
 ;; 1. Install leiningen: http://leiningen.org/
 
+(require 'clojure-mode)
+
+(define-clojure-indent
+  (describe 1) ; for speclj
+  (it 1)       ; for speclj
+  (dosync 0)
+  (io! 0))
+
 ;;---------- Markdown support
 
 (setq auto-mode-alist (cons '("\\.text" . markdown-mode) auto-mode-alist))
