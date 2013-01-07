@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; KEVIN ALBRECHT, 2012-11-27
+;; KEVIN ALBRECHT, 2013-01-07
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -85,7 +85,10 @@
 
 ;; Add in your own as you wish. If one of these fails, try M-x
 ;; package-refresh-contents to update the list of packages from ELPA
-;; and marmalade
+;; and marmalade.
+;;
+;; To upgrade all installed packages, try M-x package-list-packages,
+;; then press "U" followed by "x"
 (defvar my-packages '(starter-kit      ;; the Emacs Starter Kit
                       starter-kit-lisp ;; for generic Lisp support
                       clojure-mode     ;; for Clojure
@@ -93,7 +96,9 @@
                       markdown-mode    ;; for the Markdown markup language
                       go-mode          ;; for the Go programming lang
                       rainbow-delimiters
-                      auto-complete)
+                      auto-complete
+                      ac-nrepl         ;; for Clojure, https://github.com/purcell/ac-nrepl
+                      )       
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
@@ -190,13 +195,44 @@
 ;;---------- Clojure support
 ;; 1. Install leiningen: http://leiningen.org/
 
+;; Improve indentaion
 (require 'clojure-mode)
-
 (define-clojure-indent
   (describe 1) ; for speclj
   (it 1)       ; for speclj
   (dosync 0)
   (io! 0))
+
+(require 'auto-complete)
+
+(add-hook 'clojure-mode-hook
+          'nrepl-interaction-mode)
+(add-hook 'clojure-mode-hook
+          'auto-complete-mode)
+
+;; Enable eldoc in Clojure buffers
+(add-hook 'nrepl-interaction-mode-hook
+          'nrepl-turn-on-eldoc-mode)
+
+;; Enable Paredit in nREPL buffers
+(add-hook 'nrepl-mode-hook 'paredit-mode)
+
+;; Enable rainbow delimiters mode in nREPL buffers
+(add-hook 'nrepl-mode-hook 'rainbow-delimiters-mode)
+
+;; Autocomplete support for Clojure
+(require 'ac-nrepl)
+(add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
+(add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
+(eval-after-load "auto-complete"
+  '(add-to-list 'ac-modes 'nrepl-mode))
+
+;; Trigger auto-complete using TAB in nrepl buffers
+(defun set-auto-complete-as-completion-at-point-function ()
+  (setq completion-at-point-functions '(auto-complete)))
+(add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
+(add-hook 'nrepl-mode-hook 'set-auto-complete-as-completion-at-point-function)
+(add-hook 'nrepl-interaction-mode-hook 'set-auto-complete-as-completion-at-point-function)
 
 ;;---------- Markdown support
 
