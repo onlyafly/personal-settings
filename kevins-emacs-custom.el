@@ -91,7 +91,8 @@
                       clojure-mode     ;; for Clojure
                       nrepl            ;; for Clojure, https://github.com/kingtim/nrepl.el
                       markdown-mode    ;; for the Markdown markup language
-                      go-mode          ;; for the Go programming language
+                      go-mode          ;; for the Go programming lang
+                      rainbow-delimiters
                       auto-complete)
   "A list of packages to ensure are installed at launch.")
 
@@ -103,6 +104,10 @@
 
 (create-directory-if-missing emacs-extras-dir)
 (add-to-list 'load-path emacs-extras-dir)
+
+;;---------- Rainbow Delimiters enabled in all languages
+
+(global-rainbow-delimiters-mode)
 
 ;;---------- Color theme setup
 
