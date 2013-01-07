@@ -53,6 +53,9 @@
 (defvar emacs-extras-dir
   (concat emacs-dir "extras/"))
 
+(defvar emacs-vendor-dir
+  (concat emacs-dir "vendor/"))
+
 (defvar themes-dir
   (concat emacs-dir "themes/"))
 
@@ -92,7 +95,7 @@
 (defvar my-packages '(starter-kit      ;; the Emacs Starter Kit
                       starter-kit-lisp ;; for generic Lisp support
                       clojure-mode     ;; for Clojure
-                      nrepl            ;; for Clojure, https://github.com/kingtim/nrepl.el
+                      ;;nrepl            ;; for Clojure, https://github.com/kingtim/nrepl.el
                       markdown-mode    ;; for the Markdown markup language
                       go-mode          ;; for the Go programming lang
                       rainbow-delimiters
@@ -105,10 +108,13 @@
   (when (not (package-installed-p p))
     (package-install p)))
 
-;;---------- Emacs Extras Directory
+;;---------- Emacs Extras & Vendor Directories
 
 (create-directory-if-missing emacs-extras-dir)
 (add-to-list 'load-path emacs-extras-dir)
+
+(create-directory-if-missing emacs-vendor-dir)
+(add-to-list 'load-path emacs-vendor-dir)
 
 ;;---------- Rainbow Delimiters enabled in all languages
 
@@ -194,6 +200,12 @@
 
 ;;---------- Clojure support
 ;; 1. Install leiningen: http://leiningen.org/
+;;
+;; Using jump mode:
+;;  1. Open a Clojure file
+;;  2. Start nREPL: M-x nrepl-jack-in
+;;  3. Load the namespace: C-c C-n
+;;  4. Go to a form and use: M-.
 
 ;; Improve indentaion
 (require 'clojure-mode)
@@ -203,12 +215,18 @@
   (dosync 0)
   (io! 0))
 
-(require 'auto-complete)
+;; nREPL installation... since Marmelade and MELPA have an out-of-date
+;; version.
+;;
+;; See https://github.com/kingtim/nrepl.el
+(download-if-missing
+ (concat emacs-vendor-dir "nrepl.el")
+ "https://raw.github.com/kingtim/nrepl.el/master/nrepl.el")
+(require 'nrepl)
 
+;; For nREPL mode
 (add-hook 'clojure-mode-hook
           'nrepl-interaction-mode)
-(add-hook 'clojure-mode-hook
-          'auto-complete-mode)
 
 ;; Enable eldoc in Clojure buffers
 (add-hook 'nrepl-interaction-mode-hook
@@ -221,11 +239,14 @@
 (add-hook 'nrepl-mode-hook 'rainbow-delimiters-mode)
 
 ;; Autocomplete support for Clojure
+(require 'auto-complete)
 (require 'ac-nrepl)
 (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
 (add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'nrepl-mode))
+(add-hook 'clojure-mode-hook
+          'auto-complete-mode)
 
 ;; Trigger auto-complete using TAB in nrepl buffers
 (defun set-auto-complete-as-completion-at-point-function ()
