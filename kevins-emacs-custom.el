@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; KEVIN ALBRECHT, 2013-01-07
+;; KEVIN ALBRECHT, 2013-01-19
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -52,13 +52,12 @@
 
 (defvar emacs-extras-dir
   (concat emacs-dir "extras/"))
-
 (defvar emacs-vendor-dir
   (concat emacs-dir "vendor/"))
-
 (defvar themes-dir
   (concat emacs-dir "themes/"))
-
+(defvar theme-extras-dir
+  (concat emacs-dir "theme-extras/"))
 (defvar code-dir
   (concat home-dir "code/"))
 
@@ -122,24 +121,43 @@
 
 ;;---------- Color theme setup
 
-(create-directory-if-missing themes-dir)
+;; Theme extra directory (support files that must be on the load path)
+(create-directory-if-missing theme-extras-dir)
+(add-to-list 'load-path theme-extras-dir)
 
+;; Themes directory
+(create-directory-if-missing themes-dir)
+(add-to-list 'custom-theme-load-path themes-dir)
+
+;; Zenburn
 (download-if-missing (concat themes-dir "zenburn-theme.el")
                      "https://raw.github.com/bbatsov/zenburn-emacs/master/zenburn-theme.el")
 
-;; See https://github.com/bbatsov/solarized-emacs
-(download-if-missing (concat themes-dir "solarized-theme.el")
+;; Solarized #1: https://github.com/bbatsov/solarized-emacs
+(download-if-missing (concat theme-extras-dir "solarized.el")
                      "https://raw.github.com/bbatsov/solarized-emacs/master/solarized.el")
 (download-if-missing (concat themes-dir "solarized-dark-theme.el")
                      "https://raw.github.com/bbatsov/solarized-emacs/master/solarized-dark-theme.el")
 (download-if-missing (concat themes-dir "solarized-light-theme.el")
                      "https://raw.github.com/bbatsov/solarized-emacs/master/solarized-light-theme.el")
 
-(add-to-list 'custom-theme-load-path themes-dir)
+;; Solarized #2: https://github.com/sellout/emacs-color-theme-solarized
+;; (download-if-missing (concat themes-dir "color-theme-solarized-pkg.el")
+;;                      "https://raw.github.com/sellout/emacs-color-theme-solarized/master/color-theme-solarized-pkg.el")
+;; (download-if-missing (concat themes-dir "color-theme-solarized.el")
+;;                      "https://raw.github.com/sellout/emacs-color-theme-solarized/master/color-theme-solarized.el")
+;; (download-if-missing (concat themes-dir "solarized-dark-theme.el")
+;;                      "https://raw.github.com/sellout/emacs-color-theme-solarized/master/solarized-dark-theme.el")
+;; (download-if-missing (concat themes-dir "solarized-light-theme.el")
+;;                      "https://raw.github.com/sellout/emacs-color-theme-solarized/master/solarized-light-theme.el")
+;; (download-if-missing (concat themes-dir "solarized-definitions.el")
+;;                      "https://raw.github.com/sellout/emacs-color-theme-solarized/master/solarized-definitions.el")
 
-(load-theme 'zenburn 't)
+;;-- Load a theme
+
+;;(load-theme 'zenburn 't)
 ;;(load-theme 'solarized-light 't)
-;;(load-theme 'solarized-dark 't)
+(load-theme 'solarized-dark 't)
 
 ;;---------- FONT SETUP
 
@@ -213,7 +231,9 @@
   (describe 1) ; for speclj
   (it 1)       ; for speclj
   (dosync 0)
-  (io! 0))
+  (io! 0)
+  (try+ 0)     ; for slingshot
+  )
 
 ;; nREPL installation... since Marmelade and MELPA have an out-of-date
 ;; version.
