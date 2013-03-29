@@ -275,6 +275,10 @@
 (add-hook 'nrepl-mode-hook 'set-auto-complete-as-completion-at-point-function)
 (add-hook 'nrepl-interaction-mode-hook 'set-auto-complete-as-completion-at-point-function)
 
+;;---------- ClojureScript support
+
+(add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
+
 ;;---------- Markdown support
 
 (setq auto-mode-alist (cons '("\\.text" . markdown-mode) auto-mode-alist))
