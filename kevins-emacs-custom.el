@@ -233,6 +233,8 @@
   (dosync 0)
   (io! 0)
   (try+ 0)     ; for slingshot
+  (in 1)       ; for waltz
+  (out 1)      ; for waltz
   )
 
 ;; nREPL installation... since Marmelade and MELPA have an out-of-date
@@ -274,6 +276,10 @@
 (add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
 (add-hook 'nrepl-mode-hook 'set-auto-complete-as-completion-at-point-function)
 (add-hook 'nrepl-interaction-mode-hook 'set-auto-complete-as-completion-at-point-function)
+
+;;---------- ClojureScript support
+
+(setq auto-mode-alist (cons '("\\.cljs" . clojure-mode) auto-mode-alist))
 
 ;;---------- Markdown support
 
