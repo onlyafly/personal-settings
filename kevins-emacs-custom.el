@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; KEVIN ALBRECHT, 2013-01-19
+;; KEVIN ALBRECHT, 2013-04-12
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -233,6 +233,8 @@
   (dosync 0)
   (io! 0)
   (try+ 0)     ; for slingshot
+  (in 1)       ; for waltz
+  (out 1)      ; for waltz
   )
 
 ;; nREPL installation... since Marmelade and MELPA have an out-of-date
@@ -277,7 +279,7 @@
 
 ;;---------- ClojureScript support
 
-(add-to-list 'auto-mode-alist '("\.cljs$" . clojure-mode))
+(setq auto-mode-alist (cons '("\\.cljs" . clojure-mode) auto-mode-alist))
 
 ;;---------- Markdown support
 
