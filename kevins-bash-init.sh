@@ -1,7 +1,7 @@
 # Kevin's Bash Startup Script
 #
 # Kevin Albrecht
-# 2012-11-27
+# 2013-04-29
 #
 # 1. Give this file execute permissions:
 #
@@ -54,7 +54,7 @@ alias gd='git diff'
 #   username@Machine ~/dev/dir[master]$   # clean working directory
 #   username@Machine ~/dev/dir[master*]$  # dirty working directory
 function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
 }
 function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
