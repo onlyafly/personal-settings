@@ -155,9 +155,9 @@
 
 ;;-- Load a theme
 
-;;(load-theme 'zenburn 't)
+(load-theme 'zenburn 't)
 ;;(load-theme 'solarized-light 't)
-(load-theme 'solarized-dark 't)
+;;(load-theme 'solarized-dark 't)
 
 ;;---------- FONT SETUP
 

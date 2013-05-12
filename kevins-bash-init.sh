@@ -1,7 +1,7 @@
 # Kevin's Bash Startup Script
 #
 # Kevin Albrecht
-# 2012-11-27
+# 2013-05-12
 #
 # 1. Give this file execute permissions:
 #
@@ -25,6 +25,12 @@ alias ls='ls -algG'
 ## Erlang related aliases
 alias getrebar='wget http://cloud.github.com/downloads/basho/rebar/rebar && chmod u+x rebar'
 alias kerl='erl -pa ebin deps/*/ebin'
+
+## Clojure aliases
+# Note that without escaping, this is really:
+#   rlwrap -r -m -q '\"' -b "(){}[],^%3@\";:'" lein trampoline
+# cljsbuild repl-listen
+alias brepl='rlwrap -r -m -q '"'"'\"'"'"' -b "(){}[],^%3@\";:'"'"'" lein trampoline cljsbuild repl-listen'
 
 ## Git
 alias gs='git status'
