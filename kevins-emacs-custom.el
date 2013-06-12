@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; KEVIN ALBRECHT, 2013-04-12
+;; KEVIN ALBRECHT, 2013-06-12
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -100,12 +100,17 @@
                       rainbow-delimiters
                       auto-complete
                       ac-nrepl         ;; for Clojure, https://github.com/purcell/ac-nrepl
+                      projectile       ;; https://github.com/bbatsov/projectile
                       )       
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
   (when (not (package-installed-p p))
     (package-install p)))
+
+;;---------- Projectile (project support)
+
+(projectile-global-mode)
 
 ;;---------- Emacs Extras & Vendor Directories
 
@@ -155,9 +160,9 @@
 
 ;;-- Load a theme
 
-(load-theme 'zenburn 't)
+;;(load-theme 'zenburn 't)
 ;;(load-theme 'solarized-light 't)
-;;(load-theme 'solarized-dark 't)
+(load-theme 'solarized-dark 't)
 
 ;;---------- FONT SETUP
 
@@ -323,3 +328,6 @@
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+
+;; Automatically revert files that are updated outside of the editor
+(global-auto-revert-mode)
