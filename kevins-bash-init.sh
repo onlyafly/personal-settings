@@ -28,8 +28,8 @@ alias kerl='erl -pa ebin deps/*/ebin'
 
 ## Clojure aliases
 # Note that without escaping, this is really:
-#   rlwrap -r -m -q '\"' -b "(){}[],^%3@\";:'" lein trampoline cljsbuild repl-listen
-alias brepl='rlwrap -r -m -q '"'"'\"'"'"' -b "(){}[],^%3@\";:'"'"'" lein trampoline cljsbuild repl-listen'
+#   rlwrap -r -m " \ " -q '\"' -b "(){}[],^%3@\";:'" lein trampoline cljsbuild repl-listen
+alias brepl='rlwrap -r -m " \ " -q '"'"'\"'"'"' -b "(){}[],^%3@\";:'"'"'" lein trampoline cljsbuild repl-listen'
 
 ## Git
 alias gs='git status'
