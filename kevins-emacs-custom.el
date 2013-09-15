@@ -286,6 +286,11 @@
 
 (setq auto-mode-alist (cons '("\\.cljs" . clojure-mode) auto-mode-alist))
 
+;;---------- JavaScript support
+
+(add-hook 'js-mode-hook
+          'auto-complete-mode)
+
 ;;---------- Markdown support
 
 (setq auto-mode-alist (cons '("\\.text" . markdown-mode) auto-mode-alist))
