@@ -101,6 +101,7 @@
                       auto-complete
                       ac-nrepl         ;; for Clojure, https://github.com/purcell/ac-nrepl
                       projectile       ;; https://github.com/bbatsov/projectile
+                      coffee-mode      ;; CoffeeScript, https://github.com/defunkt/coffee-mode
                       )       
   "A list of packages to ensure are installed at launch.")
 
@@ -290,6 +291,28 @@
 
 (add-hook 'js-mode-hook
           'auto-complete-mode)
+
+;;---------- CoffeeScript support
+
+;; Installation:
+;;
+;; 1. Install NPM
+;;    ( see https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager )
+;;
+;;    sudo apt-get update
+;;    sudo add-apt-repository ppa:chris-lea/node.js
+;;    sudo apt-get update
+;;    sudo apt-get install nodejs=0.8.18-1chl1~precise1
+;;
+;; 2. Install CoffeeScript
+;;    
+;;    sudo npm install -g coffee-script
+
+(defun turn-on-whitespace-action-and-style ()
+  (setq whitespace-action '(auto-cleanup)) ;; automatically clean up bad whitespace
+  (setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab)) ;; only show bad whitespace
+  )
+(add-hook 'coffee-mode-hook 'turn-on-whitespace-action-and-style)
 
 ;;---------- Markdown support
 
