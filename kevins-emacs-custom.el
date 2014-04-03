@@ -21,8 +21,10 @@
 ;;    ~/.emacs.d/init.el
 ;;
 ;; 2. Add the following lines to your emacs init file that you found
-;;    in step 1, above:
+;;    in step 1, above (change my-user-name to something else if the
+;;    username on that computer is different than "kevin"):
 ;;
+;;    (defvar my-user-name "kevin")
 ;;    (add-to-list 'load-path "~/code/personal-settings")
 ;;    (load-library "~/code/personal-settings/kevins-emacs-custom.el")
 ;;
@@ -40,9 +42,9 @@
 
 ;; Home directory
 (defvar home-dir
-  (cond (is-system-mac "/Users/kevin.albrecht/")
-        (is-system-linux "/home/kevin/")
-        (is-system-windows "C:/Users/Kevin/")))
+  (cond (is-system-mac (concat "/Users/" my-user-name "/"))
+        (is-system-linux (concat "/home/" my-user-name "/"))
+        (is-system-windows (concat "C:/Users/" my-user-name "/"))))
 
 ;; Emacs directory
 (defvar emacs-dir
@@ -94,14 +96,15 @@
 (defvar my-packages '(starter-kit      ;; the Emacs Starter Kit
                       starter-kit-lisp ;; for generic Lisp support
                       clojure-mode     ;; for Clojure
-                      ;;nrepl            ;; for Clojure, https://github.com/kingtim/nrepl.el
+                      cider            ;; for Clojure (formerly nREPL)
                       markdown-mode    ;; for the Markdown markup language
                       go-mode          ;; for the Go programming lang
                       rainbow-delimiters
                       auto-complete
                       ac-nrepl         ;; for Clojure, https://github.com/purcell/ac-nrepl
                       projectile       ;; https://github.com/bbatsov/projectile
-                      coffee-mode      ;; CoffeeScript, https://github.com/defunkt/coffee-mode
+                      coffee-mode      ;; CoffeeScript,
+                      ;; https://github.com/defunkt/coffee-mode
                       )       
   "A list of packages to ensure are installed at launch.")
 
@@ -198,30 +201,6 @@
       (require 'go-autocomplete)
       (require 'auto-complete-config)))
 
-;;---------- ERLANG SUPPORT
-
-(if is-system-mac
-    (progn
-
-      ;; The Erlang Emacs mode
-      (add-to-list 'load-path (car (file-expand-wildcards "/usr/local/lib/erlang/lib/tools-*/emacs")))
-      (setq erlang-root-dir "/usr/local/lib/erlang")
-      (setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
-      (require 'erlang-start)
-
-      ;; Automatic Erlang syntax checking
-      (require 'erlang-flymake)
-
-      ;; Distel for Erlang; for this to work, first download from
-      ;; https://github.com/massemanet/distel and then run make.
-      (add-to-list 'load-path (concat code-dir
-                                      "distel/elisp"))
-      (require 'distel)
-      (distel-setup)))
-
-;; Erlang only supports the latin-1 encoding for source files
-(modify-coding-system-alist 'file "\\.erl\\'" 'iso-latin-1)
-
 ;;---------- Clojure support
 ;; 1. Install leiningen: http://leiningen.org/
 ;;
@@ -242,15 +221,6 @@
   (in 1)       ; for waltz
   (out 1)      ; for waltz
   )
-
-;; nREPL installation... since Marmelade and MELPA have an out-of-date
-;; version.
-;;
-;; See https://github.com/kingtim/nrepl.el
-(download-if-missing
- (concat emacs-vendor-dir "nrepl.el")
- "https://raw.github.com/kingtim/nrepl.el/master/nrepl.el")
-(require 'nrepl)
 
 ;; For nREPL mode
 (add-hook 'clojure-mode-hook
