@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; KEVIN ALBRECHT, 2013-06-12
+;; KEVIN ALBRECHT, 2014-10-10
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -21,8 +21,10 @@
 ;;    ~/.emacs.d/init.el
 ;;
 ;; 2. Add the following lines to your emacs init file that you found
-;;    in step 1, above:
+;;    in step 1, above (change my-user-name to something else if the
+;;    username on that computer is different than "kevin"):
 ;;
+;;    (defvar my-user-name "kevin")
 ;;    (add-to-list 'load-path "~/code/personal-settings")
 ;;    (load-library "~/code/personal-settings/kevins-emacs-custom.el")
 ;;
@@ -40,9 +42,9 @@
 
 ;; Home directory
 (defvar home-dir
-  (cond (is-system-mac "/Users/kevin/")
-        (is-system-linux "/home/kevin/")
-        (is-system-windows "C:/Users/Kevin/")))
+  (cond (is-system-mac (concat "/Users/" my-user-name "/"))
+        (is-system-linux (concat "/home/" my-user-name "/"))
+        (is-system-windows (concat "C:/Users/" my-user-name "/"))))
 
 ;; Emacs directory
 (defvar emacs-dir
@@ -94,8 +96,7 @@
 (defvar my-packages '(starter-kit      ;; the Emacs Starter Kit
                       starter-kit-lisp ;; for generic Lisp support
                       clojure-mode     ;; for Clojure
-                      ;;nrepl            ;; for Clojure, https://github.com/kingtim/nrepl.el
-                      pkg-info         ;; For nrepl
+                      ;;cider            ;; for Clojure (formerly nREPL)
                       markdown-mode    ;; for the Markdown markup language
                       go-mode          ;; for the Go programming lang
                       rainbow-delimiters
@@ -190,12 +191,6 @@
 (cd code-dir)
 (setq default-directory code-dir)
 
-;;---------- COFFEESCRIPT SUPPORT
-
-(require 'auto-complete)
-(add-hook 'coffee-mode-hook
-          'auto-complete-mode)
-
 ;;---------- GO SUPPORT
 
 ;; This requires go-autocomplete to be installed with "go get" to
@@ -206,30 +201,6 @@
                            "https://raw.github.com/nsf/gocode/master/emacs/go-autocomplete.el")
       (require 'go-autocomplete)
       (require 'auto-complete-config)))
-
-;;---------- ERLANG SUPPORT
-
-;;(if is-system-mac
-;;    (progn
-;;
-;;      ;; The Erlang Emacs mode
-;;      (add-to-list 'load-path (car (file-expand-wildcards "/usr/local/lib/erlang/lib/tools-*/emacs")))
-;;      (setq erlang-root-dir "/usr/local/lib/erlang")
-;;      (setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
-;;      (require 'erlang-start)
-;;
-;;      ;; Automatic Erlang syntax checking
-;;      (require 'erlang-flymake)
-;;
-;;      ;; Distel for Erlang; for this to work, first download from
-;;      ;; https://github.com/massemanet/distel and then run make.
-;;      (add-to-list 'load-path (concat code-dir
-;;                                      "distel/elisp"))
-;;      (require 'distel)
-;;      (distel-setup)))
-;;
-;;;; Erlang only supports the latin-1 encoding for source files
-;;(modify-coding-system-alist 'file "\\.erl\\'" 'iso-latin-1)
 
 ;;---------- Clojure support
 ;; 1. Install leiningen: http://leiningen.org/
@@ -251,15 +222,6 @@
   (in 1)       ; for waltz
   (out 1)      ; for waltz
   )
-
-;; nREPL installation... since Marmelade and MELPA have an out-of-date
-;; version.
-;;
-;; See https://github.com/kingtim/nrepl.el
-(download-if-missing
- (concat emacs-vendor-dir "nrepl.el")
- "https://raw.github.com/kingtim/nrepl.el/master/nrepl.el")
-(require 'nrepl)
 
 ;; For nREPL mode
 (add-hook 'clojure-mode-hook
@@ -295,6 +257,36 @@
 ;;---------- ClojureScript support
 
 (setq auto-mode-alist (cons '("\\.cljs" . clojure-mode) auto-mode-alist))
+
+;;---------- JavaScript support
+
+(add-hook 'js-mode-hook
+          'auto-complete-mode)
+
+;;---------- CoffeeScript support
+
+;; Installation:
+;;
+;; 1. Install NPM
+;;    ( see https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager )
+;;
+;;    sudo apt-get update
+;;    sudo add-apt-repository ppa:chris-lea/node.js
+;;    sudo apt-get update
+;;    sudo apt-get install nodejs=0.8.18-1chl1~precise1
+;;
+;; 2. Install CoffeeScript
+;;    
+;;    sudo npm install -g coffee-script
+
+(require 'auto-complete)
+
+(defun turn-on-whitespace-action-and-style ()
+  (setq whitespace-action '(auto-cleanup)) ;; automatically clean up bad whitespace
+  (setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab)) ;; only show bad whitespace
+  )
+(add-hook 'coffee-mode-hook 'turn-on-whitespace-action-and-style)
+(add-hook 'coffee-mode-hook 'auto-complete-mode)
 
 ;;---------- Markdown support
 
