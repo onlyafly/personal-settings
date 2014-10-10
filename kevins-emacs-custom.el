@@ -40,7 +40,7 @@
 
 ;; Home directory
 (defvar home-dir
-  (cond (is-system-mac "/Users/kevin.albrecht/")
+  (cond (is-system-mac "/Users/kevin/")
         (is-system-linux "/home/kevin/")
         (is-system-windows "C:/Users/Kevin/")))
 
@@ -95,12 +95,16 @@
                       starter-kit-lisp ;; for generic Lisp support
                       clojure-mode     ;; for Clojure
                       ;;nrepl            ;; for Clojure, https://github.com/kingtim/nrepl.el
+                      pkg-info         ;; For nrepl
                       markdown-mode    ;; for the Markdown markup language
                       go-mode          ;; for the Go programming lang
                       rainbow-delimiters
                       auto-complete
                       ac-nrepl         ;; for Clojure, https://github.com/purcell/ac-nrepl
                       projectile       ;; https://github.com/bbatsov/projectile
+                      ruby-mode
+                      web-mode
+                      coffee-mode      ;; for Coffeescript
                       )       
   "A list of packages to ensure are installed at launch.")
 
@@ -186,6 +190,12 @@
 (cd code-dir)
 (setq default-directory code-dir)
 
+;;---------- COFFEESCRIPT SUPPORT
+
+(require 'auto-complete)
+(add-hook 'coffee-mode-hook
+          'auto-complete-mode)
+
 ;;---------- GO SUPPORT
 
 ;; This requires go-autocomplete to be installed with "go get" to
@@ -199,27 +209,27 @@
 
 ;;---------- ERLANG SUPPORT
 
-(if is-system-mac
-    (progn
-
-      ;; The Erlang Emacs mode
-      (add-to-list 'load-path (car (file-expand-wildcards "/usr/local/lib/erlang/lib/tools-*/emacs")))
-      (setq erlang-root-dir "/usr/local/lib/erlang")
-      (setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
-      (require 'erlang-start)
-
-      ;; Automatic Erlang syntax checking
-      (require 'erlang-flymake)
-
-      ;; Distel for Erlang; for this to work, first download from
-      ;; https://github.com/massemanet/distel and then run make.
-      (add-to-list 'load-path (concat code-dir
-                                      "distel/elisp"))
-      (require 'distel)
-      (distel-setup)))
-
-;; Erlang only supports the latin-1 encoding for source files
-(modify-coding-system-alist 'file "\\.erl\\'" 'iso-latin-1)
+;;(if is-system-mac
+;;    (progn
+;;
+;;      ;; The Erlang Emacs mode
+;;      (add-to-list 'load-path (car (file-expand-wildcards "/usr/local/lib/erlang/lib/tools-*/emacs")))
+;;      (setq erlang-root-dir "/usr/local/lib/erlang")
+;;      (setq exec-path (cons "/usr/local/lib/erlang/bin" exec-path))
+;;      (require 'erlang-start)
+;;
+;;      ;; Automatic Erlang syntax checking
+;;      (require 'erlang-flymake)
+;;
+;;      ;; Distel for Erlang; for this to work, first download from
+;;      ;; https://github.com/massemanet/distel and then run make.
+;;      (add-to-list 'load-path (concat code-dir
+;;                                      "distel/elisp"))
+;;      (require 'distel)
+;;      (distel-setup)))
+;;
+;;;; Erlang only supports the latin-1 encoding for source files
+;;(modify-coding-system-alist 'file "\\.erl\\'" 'iso-latin-1)
 
 ;;---------- Clojure support
 ;; 1. Install leiningen: http://leiningen.org/
