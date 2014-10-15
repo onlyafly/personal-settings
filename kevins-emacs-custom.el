@@ -1,6 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;; KEVIN ALBRECHT, 2014-10-10
+;; KEVIN ALBRECHT, 2014-10-15
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -190,6 +190,10 @@
 ;; Default directory
 (cd code-dir)
 (setq default-directory code-dir)
+
+;;---------- RUBY SUPPORT
+
+(setq auto-mode-alist (cons '("\\.erb" . web-mode) auto-mode-alist))
 
 ;;---------- GO SUPPORT
 
