@@ -195,6 +195,9 @@
 
 (setq auto-mode-alist (cons '("\\.erb" . web-mode) auto-mode-alist))
 
+(add-hook 'ruby-mode-hook
+          'auto-complete-mode)
+
 ;;---------- GO SUPPORT
 
 ;; This requires go-autocomplete to be installed with "go get" to
