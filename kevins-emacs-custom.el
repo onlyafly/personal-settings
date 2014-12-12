@@ -283,6 +283,8 @@
 (add-hook 'js-mode-hook
           'auto-complete-mode)
 
+(setq js-indent-level 2)
+
 ;;---------- CoffeeScript support
 
 ;; Installation:
