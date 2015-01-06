@@ -1,7 +1,7 @@
 # Kevin's Bash Startup Script
 #
 # Kevin Albrecht
-# 2013-05-12
+# 2014-12-14
 #
 # 1. Give this file execute permissions:
 #
@@ -10,7 +10,7 @@
 # 2. Add the following to your bash initialization file:
 #
 #    . ~/code/personal-settings/kevins-bash-init.sh
-# 
+#
 #    The bash initialization file will be found in one of these
 #    locations:
 #
@@ -21,10 +21,6 @@
 #             login shell, which does not recognize bash extensions)
 
 alias ls='ls -algG'
-
-## Erlang related aliases
-alias getrebar='wget http://cloud.github.com/downloads/basho/rebar/rebar && chmod u+x rebar'
-alias kerl='erl -pa ebin deps/*/ebin'
 
 ## Clojure aliases
 # Note that without escaping, this is really:
@@ -41,6 +37,7 @@ alias gb='git branch'
 alias gch='git checkout'
 alias gl='git log'
 alias gd='git diff'
+alias gca='git add . -A && git commit -m'
 
 ##---------- Custom prompt
 
