@@ -105,6 +105,7 @@
                       projectile       ;; https://github.com/bbatsov/projectile
                       ruby-mode
                       web-mode
+                      js2-mode
                       coffee-mode      ;; for Coffeescript
                       )       
   "A list of packages to ensure are installed at launch.")
@@ -282,6 +283,8 @@
 
 (add-hook 'js-mode-hook
           'auto-complete-mode)
+
+(remove-hook 'js-mode-hook #'turn-on-auto-fill)
 
 (setq js-indent-level 2)
 
