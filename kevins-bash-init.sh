@@ -81,3 +81,4 @@ export LC_ALL=en_US.UTF-8
 
 export GOPATH=$HOME/code/gocode
 export PATH=$GOPATH/bin:$HOME/code/bin:$PATH
+export PATH=$HOME/bin/go_appengine:$PATH
