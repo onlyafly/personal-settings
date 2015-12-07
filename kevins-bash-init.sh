@@ -1,7 +1,7 @@
 # Kevin's Bash Startup Script
 #
 # Kevin Albrecht
-# 2014-12-14
+# 2015-12-06
 #
 # 1. Give this file execute permissions:
 #
