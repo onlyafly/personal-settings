@@ -79,6 +79,13 @@ export LC_ALL=en_US.UTF-8
 
 ##---------- Go-related
 
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
 export GOPATH=$HOME/code/gocode
 export PATH=$GOPATH/bin:$HOME/code/bin:$PATH
 export PATH=$HOME/bin/go_appengine:$PATH
+export PATH=$HOME/bin/activator-1.3.2:$PATH
+
+##---------- Postgres
+
+export PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
