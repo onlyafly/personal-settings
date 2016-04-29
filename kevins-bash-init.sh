@@ -1,7 +1,7 @@
 # Kevin's Bash Startup Script
 #
 # Kevin Albrecht
-# 2014-12-14
+# 2015-12-06
 #
 # 1. Give this file execute permissions:
 #
@@ -84,7 +84,6 @@ export PATH=$PATH:$GOROOT/bin
 export GOPATH=$HOME/code/gocode
 export PATH=$GOPATH/bin:$HOME/code/bin:$PATH
 export PATH=$HOME/bin/go_appengine:$PATH
-export PATH=$HOME/bin/activator-1.3.2:$PATH
 
 ##---------- Postgres
 
