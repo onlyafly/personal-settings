@@ -88,3 +88,7 @@ export PATH=$HOME/bin/go_appengine:$PATH
 ##---------- Postgres
 
 export PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
+
+##---------- PHP :(
+
+export PATH="$PATH:$HOME/.composer/vendor/bin"
