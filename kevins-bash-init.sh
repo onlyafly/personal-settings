@@ -38,6 +38,7 @@ alias gch='git checkout'
 alias gl='git log'
 alias gd='git diff'
 alias gca='git add . -A && git commit -m'
+alias gr='git rebase -i'
 
 ##---------- Custom prompt
 
