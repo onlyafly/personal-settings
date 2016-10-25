@@ -9,7 +9,7 @@
 #
 # 2. Add the following to your bash initialization file:
 #
-#    . ~/code/personal-settings/kevins-bash-init.sh
+#    . ~/src/github.com/onlyafly/personal-settings/kevins-bash-init.sh
 #
 #    The bash initialization file will be found in one of these
 #    locations:
@@ -42,16 +42,6 @@ alias gr='git rebase -i'
 
 ##---------- Custom prompt
 
-## [Fri Dec 16 15:02:33 kevin.albrecht@kevinfish: ~/code/erlang-tests]
-#PS1="[\d \t \u@\h: \w]\n$ "
-
-## [~/code/test] $
-#PS1="[\w] $ "
-
-## Kevin@KEVIN-MSI ~/code/personal-settings (master)
-#PS1="\[\033]0;$MSYSTEM:\w\007 \033[32m\]\u@\h \[\033[33m\w$(__git_ps1)\033[0m\] $ "
-#PS1='\[\033]0;$MSYSTEM:\w\007\033[32m\]\u@\h \[\033[33m\w$(__git_ps1)\033[0m\] \n$ '
-
 # http://henrik.nyh.se/2008/12/git-dirty-prompt
 # http://www.simplisticcomplexity.com/2008/03/13/show-your-git-branch-name-in-your-prompt/
 #   username@Machine ~/dev/dir[master]$   # clean working directory
@@ -82,9 +72,8 @@ export LC_ALL=en_US.UTF-8
 
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
-export GOPATH=$HOME/code/gocode
-export PATH=$GOPATH/bin:$HOME/code/bin:$PATH
-export PATH=$HOME/bin/go_appengine:$PATH
+export GOPATH=$HOME
+export PATH=$GOPATH/bin:$HOME/bin/go_appengine:$PATH
 
 ##---------- Postgres
 
