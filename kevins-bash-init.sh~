@@ -27,11 +27,6 @@ alias ls='ls -algG'
 #   rlwrap -r -m " \ " -q '\"' -b "(){}[],^%3@\";:'" lein trampoline cljsbuild repl-listen
 alias brepl='rlwrap -r -m " \ " -q '"'"'\"'"'"' -b "(){}[],^%3@\";:'"'"'" lein trampoline cljsbuild repl-listen'
 
-## Docker
-alias dvr='docker volume rm'
-alias dv='docker volume'
-alias dr='docker rm'
-
 ## Git
 alias gs='git status'
 alias ga='git add'
