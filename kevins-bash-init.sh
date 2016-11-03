@@ -75,7 +75,6 @@ export LC_ALL=en_US.UTF-8
 
 ##---------- Go-related
 
-export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
 export GOPATH=$HOME
 export PATH=$GOPATH/bin:$HOME/bin/go_appengine:$PATH
