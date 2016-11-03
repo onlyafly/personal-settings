@@ -79,6 +79,7 @@ export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin
 export GOPATH=$HOME
 export PATH=$GOPATH/bin:$HOME/bin/go_appengine:$PATH
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
 ##---------- Postgres
 
