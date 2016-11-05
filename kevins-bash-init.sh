@@ -75,10 +75,8 @@ export LC_ALL=en_US.UTF-8
 
 ##---------- Go-related
 
-export PATH=$PATH:$GOROOT/bin
 export GOPATH=$HOME
-export PATH=$GOPATH/bin:$HOME/bin/go_appengine:$PATH
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 ##---------- Postgres
 
