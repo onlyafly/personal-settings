@@ -75,11 +75,22 @@ export LC_ALL=en_US.UTF-8
 
 ##---------- Go-related
 
+program_exists () {
+	type "$1" &> /dev/null ;
+}
+if program_exists go; then
+	function setupGOROOT()
+	{
+		local GOPATH=`which go`
+		local GODIR=`dirname $GOPATH`
+		local GOPATH_BREW_RELATIVE=`readlink $GOPATH`
+		local GOPATH_BREW=`dirname $GOPATH_BREW_RELATIVE`
+		export GOROOT=`cd $GODIR; cd $GOPATH_BREW/..; pwd`
+	}
+	setupGOROOT
+fi
+
 export GOPATH=$HOME
-
-# The directory where Homebrew installs go
-export GOROOT=/usr/local/opt/go/libexec/
-
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 ##---------- Postgres
