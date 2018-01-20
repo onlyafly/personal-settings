@@ -76,6 +76,10 @@ export LC_ALL=en_US.UTF-8
 ##---------- Go-related
 
 export GOPATH=$HOME
+
+# The directory where Homebrew installs go
+export GOROOT=/usr/local/opt/go/libexec/
+
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 ##---------- Postgres
