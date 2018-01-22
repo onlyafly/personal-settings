@@ -75,8 +75,9 @@ export LC_ALL=en_US.UTF-8
 
 ##---------- Go-related
 
+## Brew sets up GOROOT automatically, so it is not needed here
 export GOPATH=$HOME
-export PATH=$GOPATH/bin:/usr/local/opt/go/libexec/bin:$GOROOT/bin:$GOPATH/bin:$PATH
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 ##---------- Postgres
 
