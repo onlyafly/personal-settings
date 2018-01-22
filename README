@@ -9,3 +9,7 @@ killall Finder
 brew install hardlink-osx
 
 hln /Users/kevin/Dropbox/.atom /Users/kevin/.atom
+
+or
+
+ln -s /Users/kevin/Dropbox/.atom /Users/kevin/.atom
