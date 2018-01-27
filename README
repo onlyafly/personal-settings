@@ -19,3 +19,7 @@ ln -s /Users/kevin/Dropbox/.atom /Users/kevin/.atom
 Install Homebrew:
 
 https://brew.sh/
+
+Install git:
+
+brew install git
