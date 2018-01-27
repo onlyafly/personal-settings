@@ -13,3 +13,9 @@ hln /Users/kevin/Dropbox/.atom /Users/kevin/.atom
 or
 
 ln -s /Users/kevin/Dropbox/.atom /Users/kevin/.atom
+
+# Setup your Mac
+
+Install Homebrew:
+
+https://brew.sh/
