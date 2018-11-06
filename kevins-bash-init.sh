@@ -89,3 +89,18 @@ export PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
 ##---------- PHP :(
 
 export PATH="$PATH:$HOME/.composer/vendor/bin"
+
+##---------- Rust
+
+# Rust can be uninstalled with `rustup self uninstall`
+export PATH="$HOME/.cargo/bin:$PATH"
+
+##---------- Python
+
+# Find your Python User Base path (where Python --user will install packages/scripts)
+USER_BASE_PATH3=$(python3 -m site --user-base)
+export PATH=$PATH:$USER_BASE_PATH3/bin
+USER_BASE_PATH2=$(python -m site --user-base)
+export PATH=$PATH:$USER_BASE_PATH2/bin
+
+#export PATH="/usr/local/lib/python3.7/site-packages:/usr/bin:/usr/local/bin:~/Library/Python/2.7/lib/python/site-packages:$PATH"
