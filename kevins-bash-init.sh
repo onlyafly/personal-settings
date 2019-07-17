@@ -82,8 +82,6 @@ export GOPATH=${HOME}
 export GOROOT=$(brew --prefix)/Cellar/go/${GOVERSION}/libexec
 export PATH=${GOPATH}/bin:$GOROOT/bin:$PATH
 
-echo WORD
-
 ##---------- Postgres
 
 export PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
