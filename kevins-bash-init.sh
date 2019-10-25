@@ -75,11 +75,9 @@ export LC_ALL=en_US.UTF-8
 
 ##---------- Go-related
 
-# This is borrowed from https://github.com/minio/cookbook/blob/master/docs/how-to-install-golang.md
 # This will set up the go environment variables for a version of Go installed with Homebrew
 export GOPATH=${HOME}
-##NOT WORKING RIGHT NOW## export GOVERSION=$(brew list go | head -n 1 | cut -d '/' -f 6)
-export GOROOT=$(brew --prefix)/Cellar/go/${GOVERSION}/libexec
+export GOROOT=/usr/local/Cellar/go/1.13.3/libexec
 export PATH=${GOPATH}/bin:$GOROOT/bin:$PATH
 
 ##---------- Postgres
