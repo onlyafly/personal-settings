@@ -79,6 +79,7 @@ export LC_ALL=en_US.UTF-8
 export GOPATH=${HOME}
 export GOROOT=/usr/local/Cellar/go/1.14.2_1/libexec
 export PATH=${GOPATH}/bin:$GOROOT/bin:$PATH
+export GOPRIVATE=github.com/onlyafly
 
 ##---------- Postgres
 
