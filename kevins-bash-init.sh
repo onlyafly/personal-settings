@@ -103,3 +103,7 @@ USER_BASE_PATH2=$(python -m site --user-base)
 export PATH=$PATH:$USER_BASE_PATH2/bin
 
 #export PATH="/usr/local/lib/python3.7/site-packages:/usr/bin:/usr/local/bin:~/Library/Python/2.7/lib/python/site-packages:$PATH"
+
+##---------- Deno
+
+export PATH="/Users/kevin/.deno/bin:$PATH"
