@@ -1,7 +1,7 @@
-# Kevin's Bash Startup Script
+# Kevin's ZSH Startup Script
 #
 # Kevin Albrecht
-# 2019-07-17
+# 2021-06-16
 #
 # 1. Give this file execute permissions:
 #
@@ -47,15 +47,17 @@ alias gr='git rebase -i'
 
 ##---------- Custom prompt
 
-PROMPT='%2~ %# '
+PROMPT='%B%F{green}%2~ $%f%b '
 
 autoload -Uz vcs_info
+autoload -U colors && colors
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 RPROMPT=\$vcs_info_msg_0_
-zstyle ':vcs_info:git:*' formats '%F{240}(%b)%r%f'
+zstyle ':vcs_info:git:*' formats '%F{blue}%b[%m%u%c]:%r%f'
 zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' check-for-changes true
 
 ##---------- Other
 
