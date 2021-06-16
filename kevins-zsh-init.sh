@@ -94,15 +94,17 @@ export PATH="$PATH:$HOME/.composer/vendor/bin"
 # Rust can be uninstalled with `rustup self uninstall`
 export PATH="$HOME/.cargo/bin:$PATH"
 
+##---------- Homebrew
+
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+##---------- Node
+
+export PATH="/usr/local/opt/node@14/bin:$PATH"
+
 ##---------- Python
 
-# Find your Python User Base path (where Python --user will install packages/scripts)
-USER_BASE_PATH3=$(python3 -m site --user-base)
-export PATH=$PATH:$USER_BASE_PATH3/bin
-USER_BASE_PATH2=$(python -m site --user-base)
-export PATH=$PATH:$USER_BASE_PATH2/bin
-
-#export PATH="/usr/local/lib/python3.7/site-packages:/usr/bin:/usr/local/bin:~/Library/Python/2.7/lib/python/site-packages:$PATH"
+export PATH="$PATH:/usr/local/opt/python@3.9/libexec/bin"
 
 ##---------- Deno
 
