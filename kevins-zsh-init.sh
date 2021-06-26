@@ -7,7 +7,7 @@
 #
 #    chmod +x kevins-zsh-init.sh
 #
-# 2. Add the following to your bash initialization file:
+# 2. Add the following to your zsh initialization file:
 #
 #    . ~/src/github.com/onlyafly/personal-settings/kevins-zsh-init.sh
 #
