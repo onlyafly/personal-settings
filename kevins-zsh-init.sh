@@ -45,7 +45,14 @@ alias gd='git diff'
 alias gca='git add . -A && git commit -m'
 alias gr='git rebase -i'
 
-##---------- Custom prompt
+##---------- ZSH: Other options
+
+# Make ZSH complete more like Bash completion.
+# Borrowed from https://github.com/ohmyzsh/ohmyzsh/issues/3775#issuecomment-125536530
+setopt AUTO_PARAM_SLASH
+zstyle ':completion:*' special-dirs true
+
+##---------- ZSH: Custom prompt
 
 PROMPT='%B%F{green}%2~ $%f%b '
 
