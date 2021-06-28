@@ -47,6 +47,14 @@ alias gr='git rebase -i'
 
 ##---------- ZSH: Other options
 
+# Setup better completion. The first time this runs, you might see a complaint about
+# insecure directories. The "compaudit" line will fix this automatically and it won't
+# happen after that.
+# From: https://scriptingosx.com/2019/07/moving-to-zsh-part-5-completions/
+# From: https://stackoverflow.com/a/22753363
+autoload -Uz compinit && compinit
+compaudit | xargs chmod g-w
+
 # Make ZSH complete more like Bash completion.
 # Borrowed from https://github.com/ohmyzsh/ohmyzsh/issues/3775#issuecomment-125536530
 setopt AUTO_PARAM_SLASH
