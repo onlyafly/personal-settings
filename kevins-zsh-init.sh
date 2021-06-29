@@ -32,7 +32,10 @@ alias dvr='docker volume rm'
 alias dv='docker volume'
 alias dr='docker rm'
 
-## Git
+##----------- Git
+
+git config --global core.editor "nano"
+
 alias gs='git status'
 alias ga='git add'
 alias gph='git push'
