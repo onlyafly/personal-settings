@@ -95,7 +95,7 @@ export LC_ALL=en_US.UTF-8
 
 # This will set up the go environment variables for a version of Go installed with Homebrew
 export GOPATH=${HOME}
-export GOROOT=/usr/local/Cellar/go/1.14.2_1/libexec
+export GOROOT=/usr/local/Cellar/go/1.17.5/libexec
 export PATH=${GOPATH}/bin:$GOROOT/bin:$PATH
 export GOPRIVATE=github.com/onlyafly
 
