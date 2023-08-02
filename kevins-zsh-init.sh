@@ -122,7 +122,7 @@ export PATH="/usr/local/opt/node@14/bin:$PATH"
 
 ##---------- Python
 
-export PATH="$PATH:/usr/local/opt/python@3.9/libexec/bin"
+#export PATH="$PATH:/usr/local/opt/python@3.9/libexec/bin"
 
 ##---------- Deno
 
