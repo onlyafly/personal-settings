@@ -101,7 +101,7 @@ export GOPRIVATE=github.com/onlyafly
 
 ##---------- Postgres
 
-export PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
+export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 
 ##---------- PHP :(
 
